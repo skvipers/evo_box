@@ -1,0 +1,78 @@
+# Общие исключения для Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+
+# Логи и временные файлы
+*.log
+*.out
+*.tmp
+
+# Виртуальные окружения
+env/
+venv/
+.myenv/
+myenv/
+ENV/
+env.bak/
+*.env
+
+# Системные файлы и IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Конфигурационные файлы и секреты
+*.env
+*.ini
+*.cfg
+*.json
+
+# Конфигурации пакетов
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Файлы упаковки дистрибутива
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Исключение для зависимости на уровне ОС
+*.dll
+*.dylib
+*.exe
+
+# Бинарные файлы Cython
+*.c
+*.cpp
+*.o
+*.obj
+
+# Файлы, относящиеся к Docker
+docker-compose.yml
+Dockerfile
+
+# Исключение для хранения данных или изображений
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Исключение для TensorFlow
+checkpoint/
+saved_model/
+
+# Исключение для Dask
+dask-worker-space/
+
+# Секретные файлы и ключи
+*.key
+*.pem
