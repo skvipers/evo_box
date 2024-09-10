@@ -1,28 +1,21 @@
 import sys
-import argparse
 from PySide6.QtWidgets import QApplication
-#from evolution_runner import run_prokaryotic_evolution
-#from distributed_runner import run_distributed_evolution
 from evobox.ui.ui import MainWindow
+from evobox.ui.controller import Controller
+from modules.evo_tracker import EvoTracker  # Логгер для отслеживания событий
 
-def main():
-    #parser = argparse.ArgumentParser(description="Запуск эволюционной симуляции")
-    #parser.add_argument('--distributed', action='store_true', help="Запуск в распределённом режиме")
-    #args = parser.parse_args()
-
-    #if args.distributed:
-        #print("Запуск в распределённом режиме...")
-        #run_distributed_evolution()
-    #else:
-        #print("Запуск локальной симуляции...")
-        #run_prokaryotic_evolution()
-
+if __name__ == "__main__":
     app = QApplication(sys.argv)
 
+    # Создаем главное окно UI
     window = MainWindow()
     window.show()
 
-    sys.exit(app.exec())
+    # Создаем логгер
+    logger = EvoTracker("SimulationLogger")
 
-if __name__ == "__main__":
-    main()
+    # Создаем контроллер и передаем его в UI
+    controller = Controller(window, logger)  # Передаем logger в контроллер
+    window.set_controller(controller)
+
+    sys.exit(app.exec())
