@@ -1,14 +1,15 @@
 from modules.evo_tracker import EvoTracker as evo_tracker
-
+from modules.position import Point2D, Point3D
 
 class Cell:
-    def __init__(self, size, metabolism_rate):
+    def __init__(self, size, metabolism_rate, position=None):
         self.size = size  # Размер клетки в микрометрах
         self.has_membrane = True  # Все клетки имеют мембрану
         self.has_cytoplasm = True  # Все клетки содержат цитоплазму
         self.has_ribosomes = True  # Рибосомы есть у всех клеток
         self.metabolism_rate = metabolism_rate  # Базовый метаболический индекс
         self.shape = "undefined"  # Форма клетки по умолчанию не определена
+        self.position = position  #Point2D или Point3D
 
     def absorb_nutrients(self, amount):
         # Логика поглощения питательных веществ

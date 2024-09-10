@@ -1,7 +1,6 @@
 from enum import Enum
 from evobox.cells.cell import Cell
 
-
 class ProkaryoticCellShape(Enum):
     COCCUS = "coccus"  # Шарообразная форма
     BACILLUS = "bacillus"  # Палочковидная форма
@@ -12,9 +11,9 @@ class ProkaryoticCellShape(Enum):
 
 class ProkaryoticCell(Cell):
     def __init__(self, size, metabolism_rate,
-                 shape: ProkaryoticCellShape, logger):
+                 shape: ProkaryoticCellShape, logger, position=None):
         # Наследуем базовые свойства из класса Cell
-        super().__init__(size, metabolism_rate)
+        super().__init__(size, metabolism_rate, position)
         self.has_nucleus = False  # Прокариоты не имеют ядра
         # Прокариоты не имеют мембранных органелл
         self.has_membrane_organelles = False
@@ -35,7 +34,8 @@ class ProkaryoticCell(Cell):
         else:
             return "unknown"
 
-    def move(self):
+    def move(self, new_position):
+        self.position = new_position
         movement_methods = {
             "flagellum": f"{self.shape.value.capitalize()} is moving using a flagellum.",
             "vibrating": f"{self.shape.value.capitalize()} is moving by vibrating.",
