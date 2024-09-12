@@ -1,4 +1,5 @@
 class Simulation:
+    "Отвечает за управление данными и реализацию логики самой симуляции."
     def __init__(self, global_grid_size, cell_size_global, local_grid_size, cell_size_local):
         """
         Инициализируем симуляцию с глобальной и локальной сеткой

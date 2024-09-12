@@ -19,6 +19,9 @@ ENV/
 env.bak/
 *.env
 
+# Документация
+docs/
+
 # Системные файлы и IDE
 .DS_Store
 Thumbs.db

@@ -10,8 +10,29 @@ class ProkaryoticCellShape(Enum):
 
 
 class ProkaryoticCell(Cell):
+    """
+    Представляет прокариотическую клетку с определенными биологическими свойствами и поведением.
+    """
+
+    SHAPE_TO_MOVEMENT = {
+        ProkaryoticCellShape.BACILLUS: "flagellum",
+        ProkaryoticCellShape.SPIRILLUM: "flagellum",
+        ProkaryoticCellShape.COCCUS: "passive",
+        ProkaryoticCellShape.VIBRIO: "vibrating",
+    }
+
     def __init__(self, size, metabolism_rate,
                  shape: ProkaryoticCellShape, logger, position=None):
+        """
+        Инициализирует экземпляр ProkaryoticCell.
+
+        Параметры:
+            size (float): Размер клетки.
+            metabolism_rate (float): Скорость метаболизма.
+            shape (ProkaryoticCellShape): Форма клетки.
+            logger (Logger): Логгер для отладки и вывода информации.
+            position (optional): Начальная позиция клетки.
+        """
         # Наследуем базовые свойства из класса Cell
         super().__init__(size, metabolism_rate, position)
         self.has_nucleus = False  # Прокариоты не имеют ядра
@@ -24,15 +45,7 @@ class ProkaryoticCell(Cell):
         self.logger = logger
 
     def determine_movement_type(self, shape):
-        if shape in [ProkaryoticCellShape.BACILLUS,
-                     ProkaryoticCellShape.SPIRILLUM]:
-            return "flagellum"
-        elif shape == ProkaryoticCellShape.COCCUS:
-            return "passive"
-        elif shape == ProkaryoticCellShape.VIBRIO:
-            return "vibrating"
-        else:
-            return "unknown"
+        return self.SHAPE_TO_MOVEMENT.get(shape, "unknown")
 
     def move(self, new_position):
         self.position = new_position

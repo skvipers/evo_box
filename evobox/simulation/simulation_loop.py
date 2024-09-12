@@ -1,6 +1,7 @@
 from PySide6.QtCore import QObject, QTimer
 
 class SimulationLoop(QObject):
+    """Отвечает за управление потоком симуляции, временными циклами и обновлениями интерфейса."""
     def __init__(self, simulation, logger, update_canvas_callback, evolve_interval=10):
         """
         simulation: объект симуляции.
